@@ -16,6 +16,9 @@ pipeline {
             }
         }
         stage('Build') {
+            when {
+                branch ''  //only run these steps on the development branch
+            }
             
             steps {
                 sh 'docker build -t  akhil5001/akhil_repo .'
