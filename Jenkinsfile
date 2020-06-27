@@ -7,6 +7,9 @@ pipeline {
 
     stages {
         stage('StopRemove') {
+            agent { 
+                label 'devops_docker_2'
+            }
             
             steps {
                 sh 'ls -l'
@@ -16,17 +19,23 @@ pipeline {
             }
         }
         stage('Build') {
+            agent { 
+                label 'devops_docker_2'
+            }
             
             
             steps {
                 sh 'docker build -t  akhil5001/devops_docker_2 .'
-                // sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
+                sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
                 
             }
         }
         stage('Push') {
             when {
                 branch 'finance'  //only run these steps on the development branch
+            }
+            agent { 
+                label 'devops_docker_2'
             }
             
             steps {
@@ -35,6 +44,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent { 
+                label 'labeldockerserver'
+            }
             
             steps {
                 sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
