@@ -10,17 +10,17 @@ pipeline {
             
             steps {
                 sh 'ls -l'
-                sh 'docker container stop dpone'
-                sh 'docker container rm dpone'
-                sh 'docker image rmi akhil5001/akhil_repo:latest'
+                sh 'docker container stop dptwo'
+                sh 'docker container rm dptwo'
+                sh 'docker image rmi akhil5001/devops_docker_2:latest'
             }
         }
         stage('Build') {
             
             
             steps {
-                sh 'docker build -t  akhil5001/akhil_repo .'
-                sh 'docker container run -d --name dpone -p 80:80 akhil5001/akhil_repo:latest'
+                sh 'docker build -t  akhil5001/devops_docker_2 .'
+                sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
                 
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             }
             
             steps {
-                sh 'docker push akhil5001/akhil_repo:latest'
+                sh 'docker push akhil5001/devops_docker_2:latest'
                 
             }
         }
