@@ -10,9 +10,9 @@ pipeline {
             
             steps {
                 sh 'ls -l'
-                sh 'docker container stop dptwo'
-                sh 'docker container rm dptwo'
-                sh 'docker image rmi akhil5001/devops_docker_2:latest'
+                //sh 'docker container stop dptwo'
+                //sh 'docker container rm dptwo'
+                //sh 'docker image rmi akhil5001/devops_docker_2:latest'
             }
         }
         stage('Build') {
