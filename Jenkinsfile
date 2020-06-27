@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'labeldockerserver'
+            label 'devops_docker_2'
         }
     }
 
