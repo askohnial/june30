@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'devops_docker_2'
-        }
-    }
+    agent none
 
     stages {
         stage('StopRemove') {
