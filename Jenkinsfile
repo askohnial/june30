@@ -43,7 +43,7 @@ pipeline {
                 sh 'docker push akhil5001/devops_docker_2:latest'
                 
             */}
-        }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
@@ -53,6 +53,6 @@ pipeline {
                 sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
                 
             */}
-        }
+        
     }
 }
