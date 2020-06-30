@@ -1,10 +1,10 @@
 pipeline {
-    agent any
-    /*{
+    agent 
+    {
         node {
-            label 'devops_docker_2'
+            label 'jenkins2-docker-slave1'
         }
-      } */
+      } 
 
     stages {
         stage('StopRemove') {
@@ -14,35 +14,35 @@ pipeline {
             }
             /*steps {
                 sh 'ls -l'
-                sh 'docker container stop dptwo'
-                sh 'docker container rm dptwo'
-                sh 'docker image rmi akhil5001/devops_docker_2:latest'
+                sh 'docker container stop jenkins2'
+                sh 'docker container rm jenkins2'
+                sh 'docker image rmi akhil5001/docker-jenkins2:latest'
            } */
         
         stage('Build') {
-            steps {
+            /*steps {
                 echo 'Building..'
-                }
+                }*/
             
             }
-            /*steps {
+            steps {
                 sh 'docker build -t  akhil5001/devops_docker_2 .'
-                // sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
+                sh 'docker container run -d --name jenkins2 -p 80:80 akhil5001/docker-jenkins2:latest'
                 
-            }*/
+            }
         
         stage('Push') {
-            steps {
+            /*steps {
                 echo 'Pushing..'
                 }
-            /*when {
+            when {
                 branch 'finance'  //only run these steps on the development branch
-            }
+            }*/
             
             steps {
-                sh 'docker push akhil5001/devops_docker_2:latest'
+                sh 'docker push akhil5001/docker-jenkins2:latest'
                 
-            }*/
+            }
             }
         stage('Deploy') {
             steps {
@@ -50,7 +50,7 @@ pipeline {
                 }
             
             /*steps {
-                sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
+                sh 'docker container run -d --name jenkins2 -p 80:80 akhil5001/docker-jenkins2:latest'
                 
            } */
            }
