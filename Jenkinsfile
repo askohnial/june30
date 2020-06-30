@@ -8,6 +8,9 @@ pipeline {
 
     stages {
         stage('StopRemove') {
+            steps {
+                echo 'Removing..'
+            }
             
             /*steps {
                 sh 'ls -l'
@@ -17,6 +20,9 @@ pipeline {
             */}
         }
         stage('Build') {
+            steps {
+                echo 'Building..'
+            }
             
             
             /*steps {
@@ -26,6 +32,9 @@ pipeline {
             */}
         }
         stage('Push') {
+            steps {
+                echo 'Pushing..'
+            }
             /*when {
                 branch 'finance'  //only run these steps on the development branch
             }
@@ -36,6 +45,9 @@ pipeline {
             */}
         }
         stage('Deploy') {
+            steps {
+                echo 'Deploying..'
+            }
             
             /*steps {
                 sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
