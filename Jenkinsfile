@@ -30,7 +30,7 @@ pipeline {
                 // sh 'docker container run -d --name dptwo -p 80:80 akhil5001/devops_docker_2:latest'
                 
             */}
-        }
+        
         stage('Push') {
             steps {
                 echo 'Pushing..'
