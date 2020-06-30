@@ -26,7 +26,7 @@ pipeline {
             
             }*/ 
             steps {
-                sh 'docker build -t  akhil5001/devops_docker_2 .'
+                sh 'docker build -t  akhil5001/docker-jenkins2 .'
                 sh 'docker container run -d --name jenkins2 -p 80:80 akhil5001/docker-jenkins2:latest'
                 
             } // steps closing 
