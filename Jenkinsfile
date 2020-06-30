@@ -3,15 +3,15 @@ pipeline {
     {
         node {
             label 'jenkins2-docker-slave1'
-        }
-      } 
+        } //closing node
+      } // closing agent
 
     stages {
         stage('StopRemove') {
             steps {
                 echo 'Removing..'
-                }
-            }
+                }// closing steps 
+            }// closing stage
             /*steps {
                 sh 'ls -l'
                 sh 'docker container stop jenkins2'
@@ -20,16 +20,17 @@ pipeline {
            } */
         
         stage('Build') {
-            /*steps {
+             /*steps {
                 echo 'Building..'
-                }*/
+                }
             
-            }
+            }*/ 
             steps {
                 sh 'docker build -t  akhil5001/devops_docker_2 .'
                 sh 'docker container run -d --name jenkins2 -p 80:80 akhil5001/docker-jenkins2:latest'
                 
-            }
+            } // steps closing 
+        } // closing stage
         
         stage('Push') {
             /*steps {
@@ -42,8 +43,8 @@ pipeline {
             steps {
                 sh 'docker push akhil5001/docker-jenkins2:latest'
                 
-            }
-            }
+            } //closing steps
+            } // closing stage
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
@@ -53,6 +54,6 @@ pipeline {
                 sh 'docker container run -d --name jenkins2 -p 80:80 akhil5001/docker-jenkins2:latest'
                 
            } */
-           }
-    }
-}
+           }// closing stage
+    } //closing stages
+} // closing pipeline
